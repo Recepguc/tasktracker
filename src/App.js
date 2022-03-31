@@ -1,6 +1,11 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import Tasks from "./components/Tasks/Tasks";
+
+import { useState } from "react";
+
+import Tasks from "./components/Tasks.jsx";
+import Header from "./components/Header";
+import AddTask from "./components/AddTask";
+
 
 function App() {
  
@@ -24,11 +29,24 @@ function App() {
         isDone: false,
       },
     ]);
+
+    const deleteTask= (silid)=>{
+      console.log("silgitsin",silid );
+      setTasks(tasks.filter((task)=>task.id !==silid))
+
+    }
+
+    const addTask=(newTask)=>{
+      const id=Math.floor(Math.random()*100+1)
+      const addNewTask={id, ...newTask  }
+      setTasks([...tasks,addNewTask]);
+    };
   
   return (
-    <div className="App">
+    <div className="container">
       <Header title="TASK TRACKER" />
-      <Tasks tasks=/>
+      <AddTask addTask={addTask}/>
+      <Tasks tasks={tasks} deleteTask={deleteTask}/>
     </div>
   );
 }

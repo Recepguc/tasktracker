@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Header = ({ title }) => {
   const handleClick = () => {
-    console.log("Click with handle from HEader");
+    console.log("Click with handle from Header");
   };
   return (
     <div className="header">
